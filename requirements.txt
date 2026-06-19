@@ -1,0 +1,10 @@
+# StockSage India — Python Dependencies
+# Install all with: pip install -r requirements.txt
+
+flask==3.0.2
+flask-cors==4.0.1
+yfinance==1.2.0
+pandas==3.0.2
+requests==2.32.3
+textblob==0.20.0
+nltk==3.9.4

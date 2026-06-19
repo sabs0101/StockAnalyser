@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StockSage India — Smart Stock Analysis</title>
+  <meta name="description" content="AI-powered Indian stock market analysis with RSI, SMA, sentiment scoring and human-like recommendations for NSE stocks."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ── SPLASH ─────────────────────────────────────────────── -->
+<div id="splash" class="screen active">
+  <div class="splash-bars" aria-hidden="true">
+    <span style="--h:55%;--d:0.0s"></span><span style="--h:75%;--d:0.15s"></span>
+    <span style="--h:40%;--d:0.3s"></span><span style="--h:90%;--d:0.1s"></span>
+    <span style="--h:60%;--d:0.25s"></span><span style="--h:35%;--d:0.4s"></span>
+    <span style="--h:80%;--d:0.05s"></span><span style="--h:50%;--d:0.35s"></span>
+    <span style="--h:70%;--d:0.2s"></span><span style="--h:45%;--d:0.45s"></span>
+    <span style="--h:85%;--d:0.1s"></span><span style="--h:65%;--d:0.3s"></span>
+  </div>
+  <div class="splash-content">
+    <div class="brand">
+      <span class="brand-icon">📈</span>
+      <span class="brand-name">StockSage <em>India</em></span>
+    </div>
+    <h1>Smart Investing,<br/>Simplified.</h1>
+    <p class="splash-sub">
+      Real-time NSE stock analysis · Technical indicators ·<br/>
+      Sentiment scoring · Human-like AI recommendations
+    </p>
+    <button id="recommendBtn" class="cta-btn" onclick="loadDashboard()">
+      Recommend Stocks
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <span class="splash-note">12 curated NSE stocks · Sorted by risk · Live prices</span>
+  </div>
+</div>
+
+<!-- ── DASHBOARD ───────────────────────────────────────────── -->
+<div id="dashboard" class="screen">
+  <nav class="navbar">
+    <div class="nav-brand" onclick="showSplash()">
+      <span>📈</span><strong>StockSage India</strong>
+    </div>
+    <div class="nav-search">
+      <input id="searchInput" type="text" placeholder="Search any NSE stock (e.g. RELIANCE, TCS, HDFCBANK)" autocomplete="off" spellcheck="false"
+             onkeydown="if(event.key==='Enter') searchStock()"/>
+      <button id="searchBtn" onclick="searchStock()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Analyse
+      </button>
+    </div>
+  </nav>
+
+  <div class="dash-hero">
+    <h2>Market Recommendations</h2>
+    <p>Sorted from <span class="risk-badge low">Low Risk</span> to <span class="risk-badge high">High Risk</span> · Live NSE data</p>
+  </div>
+
+  <div id="cardGrid" class="card-grid">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Fetching live data for 12 NSE stocks…</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── DETAIL ──────────────────────────────────────────────── -->
+<div id="detail" class="screen">
+  <nav class="navbar">
+    <button class="back-btn" onclick="showDashboard()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back
+    </button>
+    <div class="nav-search">
+      <input id="searchInput2" type="text" placeholder="Search another stock…" autocomplete="off" spellcheck="false"
+             onkeydown="if(event.key==='Enter') searchStock2()"/>
+      <button onclick="searchStock2()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        Analyse
+      </button>
+    </div>
+  </nav>
+  <div id="detailContent" class="detail-content">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Analysing stock…</p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
