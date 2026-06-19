@@ -1,11 +1,12 @@
 import math
 from datetime import datetime
 import requests
+import os
 import yfinance as yf
 import concurrent.futures
 from textblob import TextBlob
 
-NEWS_API_KEY = "8be9809cedd24f03a5c65fb1bdf268a1"
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 INDIAN_STOCKS = [
     {"symbol": "RELIANCE.NS",  "name": "Reliance Industries",        "sector": "Energy & Retail"},
